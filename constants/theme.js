@@ -18,6 +18,7 @@ const FONT = {
 };
 
 const SIZES = {
+  xxSmall: 6,
   xSmall: 10,
   small: 12,
   medium: 16,
@@ -27,6 +28,16 @@ const SIZES = {
 };
 
 const SHADOWS = {
+  xSmall: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1.8,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 2.5,
+    elevation: 1,
+  },
   small: {
     shadowColor: '#000',
     shadowOffset: {

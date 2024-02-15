@@ -1,10 +1,12 @@
-import { View, Text, TouchableOpacity, FlatList, ActivityIndicator, } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { COLORS, SIZES } from '../../../constants';
 import PopularJobCard from '../../common/cards/popular/PopularJobCard';
 import styles from './popularJobs.style';
 import useFetch from '../../../hook/useFetch';
+import ErrorMsg from '../../common/ErrorMsg';
+import ContentHeader from '../../common/content/ContentHeader';
 
 const PopularJobs = () => {
 
@@ -16,25 +18,16 @@ const PopularJobs = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>
-          Popular Jobs
-        </Text>    
-        <TouchableOpacity activeOpacity={0.45}>
-          <Text style={styles.headerBtn}>
-            Show All
-          </Text>    
-        </TouchableOpacity>           
-      </View>
+      <ContentHeader headerTitle='Popular Jobs' />
 
       <View style={styles.cardsContainer}>
         {
           isLoading ?  (
             <ActivityIndicator  size='large' color={COLORS.primary} /> 
           ) : error ? (
-            <Text style={styles.errorMsg}>
+            <ErrorMsg>
               Something went to wrong
-            </Text>
+            </ErrorMsg>
           ) : (
             <FlatList 
               data={datas}
@@ -43,7 +36,7 @@ const PopularJobs = () => {
               horizontal
               renderItem={({ item }) => (
                 <PopularJobCard 
-                  item={item}
+                  job={item}
                 />
               )}
             />

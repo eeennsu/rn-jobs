@@ -13,8 +13,12 @@ const Welcome = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.userName}>Hello Eunsu!</Text>
-        <Text style={styles.welcomeMessage}>Find your project job</Text>
+        <Text style={styles.userName}>
+          Hello Eunsu!
+        </Text>
+        <Text style={styles.welcomeMessage}>
+          Find your project job
+        </Text>
       </View>
 
       <View style={styles.searchContainer}>
@@ -43,6 +47,9 @@ const Welcome = () => {
       <View style={styles.tabsContainer}>
         <FlatList 
           data={jobs} 
+          keyExtractor={item => item}
+          contentContainerStyle={{ columnGap: SIZES.small }}
+          horizontal
           renderItem={({ item }) => (
             <TouchableOpacity 
               style={activeJobType === item ? styles.activityTab : styles.basicTab}
@@ -56,10 +63,7 @@ const Welcome = () => {
                 {item}
               </Text>
             </TouchableOpacity>
-          )}
-          keyExtractor={item => item}
-          contentContainerStyle={{ columnGap: SIZES.small }}
-          horizontal
+          )}  
         />
       </View>
     </View>

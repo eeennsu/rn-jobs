@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { COLORS, FONT, SIZES } from '../../../constants';
+import { COLORS, FONT, SHADOWS, SIZES } from '../../../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -58,16 +58,16 @@ const styles = StyleSheet.create({
   basicTab: {
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
-    borderRadius: SIZES.small,
+    borderRadius: SIZES.large,
     borderWidth: 1,
     borderColor: COLORS.gray2
   },
   activityTab: {
     paddingVertical: SIZES.small / 2,
     paddingHorizontal: SIZES.small,
-    borderRadius: SIZES.small,
-    borderWidth: 1,
-    borderColor: COLORS.secondary
+    borderRadius: SIZES.large,
+    backgroundColor: 'black',
+    ...SHADOWS.medium
   },
   basicTabText: {
     fontFamily: FONT.medium,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   activityTabText: {
     fontFamily: FONT.medium,
-    color: COLORS.secondary
+    color: COLORS.white
   },
 });
 
