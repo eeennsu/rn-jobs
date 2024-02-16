@@ -8,13 +8,13 @@ import styles from './nearbyJobs.style';
 import ErrorMsg from '../../common/ErrorMsg';
 import ContentHeader from '../../common/content/ContentHeader';
 
-const NearbyJobs = () => {
+const NearbyJobs = ({ data, isLoading, error }) => {
 
   const router = useRouter();
-  const { datas, isLoading, error, refetch } = useFetch('/search', {
-    query: 'React Native developer',
-    num_pages: '1'
-  });
+
+  const handleCardPress = (jobId) => {
+    router.push(`/job_detail/${jobId}`);
+  }
 
   return (
     <View>
@@ -25,17 +25,13 @@ const NearbyJobs = () => {
           isLoading ? (
             <ActivityIndicator size='large' color={COLORS.primary} />
           ) : error ? (
-            <ErrorMsg>
-              Something went to wrong
-            </ErrorMsg>
+            <ErrorMsg />
           ) : (
-            datas.map((job) => (
+            data.map((job) => (
               <NearbyJobCard
                 key={`nearby-job-${job.job_id}`}
                 job={job}
-                handleNavigate={() => {
-                  router.push(`/job-details/${job.job_id}`);
-                }}
+                handleCardPress={handleCardPress}
               />
             ))
           )

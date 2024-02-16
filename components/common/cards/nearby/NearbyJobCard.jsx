@@ -2,20 +2,20 @@ import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { basicLogo, checkImageUrl } from '../../../../utils/util.image';
 import styles from './nearbyJobCard.style';
 
-const NearbyJobCard = ({ job, handleNavigate }) => {
-  console.log(job);
+const NearbyJobCard = ({ job, handleCardPress }) => {
+
+  const jobId = job?.job_id || '';
+
   return (
     <TouchableOpacity 
       style={styles.container} 
-      onPress={handleNavigate} 
+      onPress={() => handleCardPress(jobId)} 
       activeOpacity={0.5}
     >
       <TouchableOpacity style={styles.logoContainer}>
         <Image 
           style={styles.logoImage}
-          source={{ uri: checkImageUrl(job?.employer_logo) 
-            ? job?.employer_logo
-            : basicLogo }} 
+          source={{ uri: (job?.employer_logo) ? job?.employer_logo : basicLogo }} 
           resizeMode='contain'
         />
       </TouchableOpacity>

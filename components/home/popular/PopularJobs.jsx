@@ -8,13 +8,16 @@ import useFetch from '../../../hook/useFetch';
 import ErrorMsg from '../../common/ErrorMsg';
 import ContentHeader from '../../common/content/ContentHeader';
 
-const PopularJobs = () => {
+const PopularJobs = ({ data, isLoading, error }) => {
 
   const router = useRouter();
-  const { datas, error, isLoading, refetch } = useFetch('/search', { 
-    query: 'React developer', 
-    num_pages: '1' 
-  });
+
+  const [selectedJobId, setSelectedJobId] = useState(null);
+
+  const handleCardPress = (jobId) => {
+    router.push(`/job_detail/${jobId}`);
+    setSelectedJobId(jobId);
+  }
 
   return (
     <View style={styles.container}>
@@ -25,18 +28,17 @@ const PopularJobs = () => {
           isLoading ?  (
             <ActivityIndicator  size='large' color={COLORS.primary} /> 
           ) : error ? (
-            <ErrorMsg>
-              Something went to wrong
-            </ErrorMsg>
+            <ErrorMsg />  
           ) : (
             <FlatList 
-              data={datas}
-              keyExtractor={item => item?.job_id}
+              data={data}
+              keyExtractor={item => `popular-job-${item?.job_id}`}
               contentContainerStyle={{ columnGap: SIZES.medium }}
               horizontal
               renderItem={({ item }) => (
                 <PopularJobCard 
                   job={item}
+                  handlePressCard={handleCardPress}
                 />
               )}
             />

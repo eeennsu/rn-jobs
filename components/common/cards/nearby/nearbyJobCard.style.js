@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 10,
-    ...SHADOWS.medium
   },
   contentBox: {
     flex: 1

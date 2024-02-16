@@ -4,20 +4,18 @@ import styles from './popularJobCard.style';
 
 const PopularJobCard = ({ job, selectedJob, handlePressCard }) => {
 
-  const jobId = job?.jobId || '';
+  const jobId = job?.job_id || '';
 
   return (
     <TouchableOpacity 
       activeOpacity={0.4}
       style={styles.container(selectedJob, jobId)}
-      onPress={() => handlePressCard(job)}
+      onPress={() => handlePressCard(jobId)}
     >
       <TouchableOpacity style={styles.logoContainer(selectedJob, jobId)}>
         <Image 
           source={{ 
-            uri: checkImageUrl(job?.employer_logo) 
-              ? job.employer_logo 
-              : basicLogo 
+            uri: checkImageUrl(job?.employer_logo) ? job.employer_logo : basicLogo 
           }}
           style={styles.logoImage}
           resizeMode='contain'

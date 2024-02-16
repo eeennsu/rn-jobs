@@ -5,3 +5,5 @@ import { COLORS, FONT, SIZES, SHADOWS } from './theme';
 export { images, icons, COLORS, FONT, SIZES, SHADOWS };
 
 export const jobs = ['Full-time', 'Part-time', 'Contractor'];
+
+export const tabs = ['About', 'Qualifications', 'Responsibilities', 'Benefits'];
