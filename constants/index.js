@@ -7,3 +7,5 @@ export { images, icons, COLORS, FONT, SIZES, SHADOWS };
 export const jobs = ['Full-time', 'Part-time', 'Contractor'];
 
 export const tabs = ['About', 'Qualifications', 'Responsibilities', 'Benefits'];
+
+export const setPreparing = () => alert('준비 중인 기능입니다.');

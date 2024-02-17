@@ -3,6 +3,7 @@ import { StyleSheet, SafeAreaView, FlatList } from 'react-native';
 import { useEffect, useState } from 'react';
 import { COLORS, SIZES, icons } from '../../constants';
 import { NearbyJobCard, ScreenHeaderBtn } from '../../components';
+import { API_KEY } from '../../hook/useFetch';
 import SearchHeader from '../../components/home/search/SearchHeader';
 import SearchFooter from '../../components/home/search/SearchFooter';
 import axios from 'axios';
@@ -26,12 +27,12 @@ const JonSearchResult = () => {
         method: 'GET',
         url: 'https://jsearch.p.rapidapi.com/search',
         headers: {
-          'X-RapidAPI-Key': '',
+          'X-RapidAPI-Key': API_KEY,
           'X-RapidAPI-Host': "jsearch.p.rapidapi.com",
         },
         params: {
           query: params.id,
-          page: page.toString(),
+          page: curPage.toString(),
         },
       }
 
@@ -48,21 +49,18 @@ const JonSearchResult = () => {
   }
 
   const handlePagination = (direction) => {
-    if (direction === 'left' && page > 1) {
-      setCurPage(page - 1);
+    if (direction === 'left' && curPage > 1) {
+      setCurPage(prev => prev - 1);
       handleSearch();
     } else if (direction === 'right') {
-      setCurPage(page + 1);
+      setCurPage(prev => prev + 1);
       handleSearch();
-    }
+    }    
   }
 
   useEffect(() => {
     handleSearch();
   }, []);
-  useEffect(() => {
-    console.log('searchResult', searchResult);
-  }, [searchResult]);
 
   return (
     <SafeAreaView style={styles.container}>

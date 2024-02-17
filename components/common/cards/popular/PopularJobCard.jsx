@@ -2,17 +2,17 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { basicLogo, checkImageUrl } from '../../../../utils/util.image';
 import styles from './popularJobCard.style';
 
-const PopularJobCard = ({ job, selectedJob, handlePressCard }) => {
+const PopularJobCard = ({ job, selectedJobId, handlePressCard }) => {
 
   const jobId = job?.job_id || '';
 
   return (
     <TouchableOpacity 
       activeOpacity={0.4}
-      style={styles.container(selectedJob, jobId)}
+      style={styles.container(selectedJobId, jobId)}
       onPress={() => handlePressCard(jobId)}
     >
-      <TouchableOpacity style={styles.logoContainer(selectedJob, jobId)}>
+      <TouchableOpacity style={styles.logoContainer(selectedJobId, jobId)}>
         <Image 
           source={{ 
             uri: checkImageUrl(job?.employer_logo) ? job.employer_logo : basicLogo 
@@ -26,7 +26,7 @@ const PopularJobCard = ({ job, selectedJob, handlePressCard }) => {
       </Text>
 
       <View style={styles.infoContainer}>
-        <Text style={styles.jobName(selectedJob, jobId)} numberOfLines={1}>
+        <Text style={styles.jobName(selectedJobId, jobId)} numberOfLines={1}>
           {job?.job_title || '-'}
         </Text>
         <Text style={styles.location}>

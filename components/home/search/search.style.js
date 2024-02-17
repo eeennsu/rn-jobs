@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { SIZES } from '../../../constants';
+import { SIZES, FONT, COLORS } from '../../../constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     height: 30,
     borderRadius: 5,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: COLORS.tertiary
   },
   paginationImage: {

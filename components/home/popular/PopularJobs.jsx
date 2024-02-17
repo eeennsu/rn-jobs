@@ -38,6 +38,7 @@ const PopularJobs = ({ data, isLoading, error }) => {
               renderItem={({ item }) => (
                 <PopularJobCard 
                   job={item}
+                  selectedJobId={selectedJobId}
                   handlePressCard={handleCardPress}
                 />
               )}

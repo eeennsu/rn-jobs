@@ -8,7 +8,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleSearchClick }) => {
 
   const router = useRouter();
   const [activeJobType, setActiveJobType] = useState('Full-time');
-  
+
   return (
     <View>
       <View style={styles.container}>
@@ -25,7 +25,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleSearchClick }) => {
           <TextInput 
             style={styles.searchInput}
             value={searchTerm}
-            onChange={(text) => setSearchTerm(text)}
+            onChangeText={(text) => setSearchTerm(text)}
             placeholder='What are you looking for?'
           />
         </View>
@@ -36,8 +36,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleSearchClick }) => {
           onPress={handleSearchClick}
         >
           <Image 
-            source={icons.search}
-            resizeMode='contain'
+            source={icons.search}       
             style={styles.searchBtnImage}
           />
         </TouchableOpacity>

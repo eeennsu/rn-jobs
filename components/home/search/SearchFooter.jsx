@@ -8,10 +8,11 @@ const SearchFooter = ({ handlePagination, curPage }) => {
     <View style={styles.footerContainer}>
       <TouchableOpacity
         style={styles.paginationButton}
+        activeOpacity={0.5}
         onPress={() => handlePagination('left')}
       >
         <Image 
-          source={icons.chevronRight}
+          source={icons.chevronLeft}
           style={styles.paginationImage}
         />
       </TouchableOpacity>
@@ -21,7 +22,8 @@ const SearchFooter = ({ handlePagination, curPage }) => {
         </Text>
       </View>
       <TouchableOpacity
-        style={styles.paginationButtonx}
+        style={styles.paginationButton}
+        activeOpacity={0.5}
         onPress={() => handlePagination('right')}
       >
         <Image 

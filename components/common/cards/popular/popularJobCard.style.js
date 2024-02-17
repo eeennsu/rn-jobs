@@ -2,19 +2,19 @@ import { StyleSheet } from 'react-native';
 import { COLORS, FONT, SHADOWS, SIZES } from '../../../../constants';
 
 const styles = StyleSheet.create({
-  container: (selectedJob, jobId) => ({
+  container: (selectedJobId, jobId) => ({
     width: 250,
     padding: SIZES.xLarge,
-    backgroundColor: selectedJob === jobId ? COLORS.primary : '#FFF',
+    backgroundColor: selectedJobId === jobId ? COLORS.primary : '#FFF',
     borderRadius: SIZES.medium,
     justifyContent: 'space-between',
     ...SHADOWS.medium,
     shadowColor: COLORS.white, 
   }),
-  logoContainer: (selectedJob, jobId) => ({
+  logoContainer: (selectedJobId, jobId) => ({
     width: 50,
     height: 50,
-    backgroundColor: selectedJob === jobId ? '#FFF' : COLORS.white,
+    backgroundColor: selectedJobId === jobId ? '#FFF' : COLORS.white,
     borderRadius: SIZES.medium,
     justifyContent: 'center',
     alignItems: 'center',
@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
   infoContainer: {
     marginTop: SIZES.large
   },
-  jobName: (selectedJob, jobId) => ({
+  jobName: (selectedJobId, jobId) => ({
     fontSize: SIZES.large - 2,
     fontFamily: FONT.medium,
-    color: selectedJob === jobId ? COLORS.white : COLORS.primary
+    color: selectedJobId === jobId ? COLORS.white : COLORS.primary
   }),
   infoWrapper: {
     flexDirection: 'row',
@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center'
   },
-  publisher: (selectedJob, jobId) => ({
+  publisher: (selectedJobId, jobId) => ({
     fontSize: SIZES.medium - 2,
     fontFamily: FONT.regular,
-    color: selectedJob === jobId ? COLORS.white : COLORS.primary
+    color: selectedJobId === jobId ? COLORS.white : COLORS.primary
   }),
   location: {
     fontSize: SIZES.medium - 2,

@@ -1,5 +1,5 @@
 import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
-import { icons } from '../../../constants';
+import { icons, setPreparing } from '../../../constants';
 import styles from './footer.style';
 
 const Footer = ({ googleLink }) => {
@@ -8,7 +8,7 @@ const Footer = ({ googleLink }) => {
     <View style={styles.container}>
       <TouchableOpacity 
         style={styles.likeBtn}
-        onPress={() => alert('준비 중인 기능입니다.')}
+        onPress={setPreparing}
       >
         <Image 
           style={styles.likeImage}

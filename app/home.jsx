@@ -30,8 +30,10 @@ const Home = () => {
   }, []);
 
   const handleSearchClick = () => {
-    if (searchTerm) {
+    if (searchTerm.length > 1) {
       router.push(`/search/${searchTerm}`);
+    } else {
+      alert('Please select a search term');
     }
   }
 

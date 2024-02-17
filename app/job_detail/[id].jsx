@@ -1,8 +1,8 @@
 import { View, Text, ActivityIndicator, RefreshControl, ScrollView, SafeAreaView, StyleSheet } from 'react-native';
-import { Stack, useRouter, search, useLocalSearchParams } from 'expo-router';
+import { Stack, useRouter, useLocalSearchParams } from 'expo-router';
 import { useCallback, useState } from 'react';
 import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } from '../../components';
-import { COLORS, icons, SIZES, tabs } from '../../constants';
+import { COLORS, icons, setPreparing, SIZES, tabs } from '../../constants';
 import useFetch from '../../hook/useFetch';
 import ErrorMsg from '../../components/common/ErrorMsg';
 
@@ -12,7 +12,7 @@ const JobDetails = () => {
   const router = useRouter();
 
   const { data, isLoading, error, refetch } = useFetch('/job-details', {
-    job_id: params?.id,
+    job_id: params?.id || '',
   }, true);
 
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -58,10 +58,7 @@ const JobDetails = () => {
   }
 
   return (
-    <SafeAreaView style={{
-      flex: 1,
-      backgroundColor: COLORS.lightWhite
-    }}>
+    <SafeAreaView style={styles.mainContainer}>
       <Stack.Screen options={{
         headerStyle: { backgroundColor: COLORS.lightWhite },
         headerShadowVisible: false,
@@ -77,6 +74,7 @@ const JobDetails = () => {
           <ScreenHeaderBtn 
             iconUrl={icons.share} 
             isFull={true} 
+            handlePress={setPreparing}
           />
         ),
         headerTitle: ''
@@ -129,8 +127,12 @@ export default JobDetails;
 
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    backgroundColor: COLORS.lightWhite
+  },
   container: {
     padding: SIZES.medium,
-    paddingBottom: 30
+    paddingBottom: 100
   }
 });
